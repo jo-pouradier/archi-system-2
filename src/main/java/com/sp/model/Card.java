@@ -1,15 +1,37 @@
 package com.sp.model;
 
-public class Card {
+import lombok.Getter;
+import lombok.Setter;
 
+import java.util.UUID;
+
+public class Card implements OwnerUUID{
+
+    private UUID uuid;
+    @Getter
     private String name;
+    @Getter
     private String description;
+    @Getter
+    @Setter
     private String imageUrl;
+    @Getter
+    @Setter
     private String family;
+    @Getter
+    @Setter
     private String affinity;
+    @Getter
+    @Setter
     private int hp;
+    @Getter
+    @Setter
     private int attack;
+    @Getter
+    @Setter
     private int defense;
+    @Getter
+    @Setter
     private int energy;
     public Card(){
 
@@ -27,79 +49,29 @@ public class Card {
         this.energy = energy;
     }
 
+    @Override
     public String toString() {
-        return "AbstractCard{name='" + this.name + '\'' + ", description='" + this.description + '\'' + ", imageUrl='" + this.imageUrl + '\'' + ", family='" + this.family + '\'' + ", affinity='" + this.affinity + '\'' + ", hp=" + this.hp + ", attack=" + this.attack + ", defense=" + this.defense + ", energy=" + this.energy + '}';
+        return "Card{" +
+                "uuid=" + uuid +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", family='" + family + '\'' +
+                ", affinity='" + affinity + '\'' +
+                ", hp=" + hp +
+                ", attack=" + attack +
+                ", defense=" + defense +
+                ", energy=" + energy +
+                '}';
     }
 
-    public String getName() {
-        return this.name;
+    @Override
+    public UUID getUUID() {
+        return this.uuid;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return this.description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getImageUrl() {
-        return this.imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
-    public String getFamily() {
-        return this.family;
-    }
-
-    public void setFamily(String family) {
-        this.family = family;
-    }
-
-    public String getAffinity() {
-        return this.affinity;
-    }
-
-    public void setAffinity(String affinity) {
-        this.affinity = affinity;
-    }
-
-    public int getHp() {
-        return this.hp;
-    }
-
-    public void setHp(int hp) {
-        this.hp = hp;
-    }
-
-    public int getAttack() {
-        return this.attack;
-    }
-
-    public void setAttack(int attack) {
-        this.attack = attack;
-    }
-
-    public int getDefense() {
-        return this.defense;
-    }
-
-    public void setDefense(int defense) {
-        this.defense = defense;
-    }
-
-    public int getEnergy() {
-        return this.energy;
-    }
-
-    public void setEnergy(int energy) {
-        this.energy = energy;
+    @Override
+    public void setUUID(UUID uuid) {
+        this.uuid = uuid;
     }
 }
