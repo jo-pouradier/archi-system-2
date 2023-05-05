@@ -17,7 +17,7 @@ public class CardService {
     private CardRepository cardRepository;
 
     public Card getCard(UUID uuid){
-        return cardRepository.findById(uuid).get();
+        return cardRepository.findById(uuid).orElse(null);
     }
 
     public List<Card> getCards() {

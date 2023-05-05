@@ -27,4 +27,5 @@ public class RestAuthCtr {
             @CookieValue(name = "user-id", defaultValue = "0") String userId) {
         return userId;
     }
+
 }
