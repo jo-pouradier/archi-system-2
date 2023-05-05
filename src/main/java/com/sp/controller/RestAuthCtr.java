@@ -1,37 +1,28 @@
 package com.sp.controller;
 
-import com.sp.model.AbstractCard;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.*;
+import com.sp.service.AuthService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class RestAuthCtr {
 
-    @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String index(Model model) {
-        if(readCookie())
-        ResponseCookie springCookie = ResponseCookie.from("user-id", "c2FtLnNtaXRoQGV4YW1wbGUuY29t")
-                .httpOnly(true)
-                .secure(true)
-                .path("/")
-                .maxAge(60)
-                .domain("example.com")
-                .build();
-        ResponseEntity
-                .ok()
-                .header(HttpHeaders.SET_COOKIE, springCookie.toString())
-                .build();
-        return "index";
+        String cookie = readCookie("user-id");
+        if(AuthService.logUser(cookie)){
+            model.addAttribute("message", "Welcome to the home page!");
+            model.addAttribute("messageLocal", "Welcome to the home page!");
+            return "index";
+        } else {
+            return "login";
+        }
     }
 
-    @GetMapping("/read-spring-cookie")
+   // @GetMapping("/read-spring-cookie")
     public String readCookie(
             @CookieValue(name = "user-id", defaultValue = "0") String userId) {
         return userId;
