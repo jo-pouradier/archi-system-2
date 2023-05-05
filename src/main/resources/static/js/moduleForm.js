@@ -1,25 +1,17 @@
-async function sendForm(){
-    const form = document.getElementById("addCardForm");
+export async function getFormData(idForm){
+    const form = document.getElementById(idForm);
     const formData = new FormData(form);
-    const card = Object.fromEntries(formData.entries());
-    const cardSet = await getCards();
-
-    for (let cardS of cardSet){
-        if (cardS === card) {
-            alert('La carte existe déjà');
-            return;
-        }
-    }
-    sendCard(card);
+    const data = Object.fromEntries(formData.entries());
     cancelForm();
+    return data;
 }
 
-function cancelForm(){
+export function cancelForm(){
     const form = document.getElementById("addCardForm");
     form.reset();
 }
 
-function setCookie(cname, cvalue, exdays) {
+export function setCookie(cname, cvalue, exdays) {
     const d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
     let expires = "expires="+ d.toUTCString();
