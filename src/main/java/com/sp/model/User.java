@@ -3,6 +3,7 @@ package com.sp.model;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.UUID;
 
 public class User implements OwnerUUID{
@@ -32,4 +33,5 @@ public class User implements OwnerUUID{
     public void setUUID(UUID uuid) {
         this.uuid = uuid;
     }
+
 }
