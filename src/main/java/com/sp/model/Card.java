@@ -1,6 +1,6 @@
 package com.sp.model;
 
-public class AbstractCard{
+public class Card {
 
     private String name;
     private String description;
@@ -11,11 +11,11 @@ public class AbstractCard{
     private int attack;
     private int defense;
     private int energy;
-    public AbstractCard(){
+    public Card(){
 
     }
 
-    public AbstractCard(String name, String description, String imageUrl, String family, String affinity, int hp, int attack, int defense, int energy) {
+    public Card(String name, String description, String imageUrl, String family, String affinity, int hp, int attack, int defense, int energy) {
         this.name = name;
         this.description = description;
         this.imageUrl = imageUrl;
