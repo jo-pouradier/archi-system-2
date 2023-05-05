@@ -30,10 +30,9 @@ async function getCards(){
     const context = {
         method: 'GET'
     };
-    response = await fetch(url,context);
+    let response = await fetch(url, context);
     if(response.ok){
-        let res = response.json();
-        return res;
+        return response.json();
     }
     else{
         console.log(response.status);
@@ -48,17 +47,16 @@ function cancelForm(){
 
 function renderCard(card, i){
     let clone = document.importNode(TEMPLATE, true);
-    newContent= clone.innerHTML
-                .replace(/{{family}}/g, card.family)
-                .replace(/{{name}}/g, card.name)
-                .replace(/{{imgUrl}}/g, card.imgUrl)
-                .replace(/{{description}}/g, card.description)
-                .replace(/{{affinity}}/g, card.affinity)
-                .replace(/{{attack}}/g, card.attack)
-                .replace(/{{defense}}/g, card.defense)
-                .replace(/{{energy}}/g, card.energy)
-                .replace(/{{hp}}/g, card.hp);
-    clone.innerHTML = newContent;
+    clone.innerHTML = clone.innerHTML
+        .replace(/{{family}}/g, card.family)
+        .replace(/{{name}}/g, card.name)
+        .replace(/{{imgUrl}}/g, card.imgUrl)
+        .replace(/{{description}}/g, card.description)
+        .replace(/{{affinity}}/g, card.affinity)
+        .replace(/{{attack}}/g, card.attack)
+        .replace(/{{defense}}/g, card.defense)
+        .replace(/{{energy}}/g, card.energy)
+        .replace(/{{hp}}/g, card.hp);
     clone.setAttribute("id", "card"+i);
     CONTAINER.append(clone);
 }
@@ -79,5 +77,7 @@ function testRenderCard(){
     renderCard(cardTest, -1);
  }
 
-// window.onload = testRenderCard();
+window.onload = function() {
+    testRenderCard();
+}
 
