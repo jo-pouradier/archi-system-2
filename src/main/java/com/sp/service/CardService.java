@@ -9,7 +9,7 @@ import java.util.UUID;
 public class CardService {
 
 
-    public Card getCard(UUID uuid){
+    public Card getCard(UUID uuid){;
         return null;
     }
 
