@@ -1,10 +1,7 @@
 package com.sp.controller;
 
-
+@Controller
 public class CardController {
 
-	public CardController() {
-		// TODO Auto-generated constructor stub
-	}
 
 }
