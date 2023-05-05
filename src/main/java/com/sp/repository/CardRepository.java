@@ -2,15 +2,11 @@ package com.sp.repository;
 
 import com.sp.model.Card;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
-public class CardRepository extends SimpleUUIDAbstractRepository<Card> {
+@Repository
+public interface CardRepository extends CrudRepository<Card, UUID> {
 
-        public List<Card> findByFamily(String name){
-            return null;
-        }
 }

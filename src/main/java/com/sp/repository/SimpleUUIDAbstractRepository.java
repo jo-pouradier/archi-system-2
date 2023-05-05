@@ -1,6 +1,5 @@
 package com.sp.repository;
 
-import com.sp.model.Card;
 import com.sp.model.OwnerUUID;
 import org.springframework.data.repository.CrudRepository;
 
@@ -8,38 +7,40 @@ import java.util.HashMap;
 import java.util.Optional;
 import java.util.UUID;
 
-public class SimpleUUIDAbstractRepository<T extends OwnerUUID> implements CrudRepository<OwnerUUID, UUID> {
+public abstract class SimpleUUIDAbstractRepository<T extends OwnerUUID> implements CrudRepository<T, UUID> {
 
-    HashMap<UUID, OwnerUUID> owners = new HashMap<UUID, OwnerUUID>();
+    HashMap<UUID, T> owners = new HashMap<UUID, T>();
 
     @Override
-    public <S extends OwnerUUID> S save(S s) {
+    public <S extends T> S save(S s) {
         return null;
     }
 
     @Override
-    public <S extends OwnerUUID> Iterable<S> saveAll(Iterable<S> iterable) {
+    public <S extends T> Iterable<S> saveAll(Iterable<S> iterable) {
         return null;
     }
 
     @Override
-    public Optional<OwnerUUID> findById(UUID uuid) {
-        OwnerUUID owner = owners.getOrDefault(uuid, null);
+    public Optional<T> findById(UUID uuid) {
+        T owner = owners.getOrDefault(uuid, this.getNullOwner());
         return Optional.ofNullable(owner);
     }
 
+    public abstract T getNullOwner();
+
     @Override
     public boolean existsById(UUID uuid) {
-        return this.findById(uuid).isPresent();
+        return owners.containsKey(uuid);
     }
 
     @Override
-    public Iterable<OwnerUUID> findAll() {
+    public Iterable<T> findAll() {
         return owners.values();
     }
 
     @Override
-    public Iterable<OwnerUUID> findAllById(Iterable<UUID> iterable) {
+    public Iterable<T> findAllById(Iterable<UUID> iterable) {
         return null;
     }
 
@@ -54,12 +55,12 @@ public class SimpleUUIDAbstractRepository<T extends OwnerUUID> implements CrudRe
     }
 
     @Override
-    public void delete(OwnerUUID owner) {
+    public void delete(T owner) {
         this.deleteById(owner.getUUID());
     }
 
     @Override
-    public void deleteAll(Iterable<? extends OwnerUUID> iterable) {
+    public void deleteAll(Iterable<? extends T> iterable) {
         iterable.forEach(this::delete);
     }
 
