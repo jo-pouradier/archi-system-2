@@ -22,9 +22,14 @@ public class RestCardCtr {
         System.out.println(Arrays.toString(cards.toArray()));
         return cards;
     }
-    @GetMapping(value = "/{uuid}", produces = "application/json")
+    @GetMapping(value = "/card/{uuid}", produces = "application/json")
     public Card getCard(@PathVariable("uuid") String uuid) {
-        Card card = cardService.getCard(UUID.fromString(uuid));
+        return cardService.getCard(UUID.fromString(uuid));
+    }
+
+    @PostMapping (value = "/addCard", produces = "application/json")
+    public Card addCard(@RequestBody Card card){
+        cardService.saveCard(card);
         return card;
     }
 }
