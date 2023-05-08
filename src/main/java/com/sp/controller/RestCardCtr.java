@@ -3,6 +3,7 @@ package com.sp.controller;
 import com.sp.model.Card;
 import com.sp.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -16,7 +17,7 @@ public class RestCardCtr {
     @Autowired
     private CardService cardService;
 
-    @GetMapping(value = "/", produces = "application/json")
+    @GetMapping(value = "/getCards", produces = "application/json")
     public List<Card> getCards() {
         List<Card> cards = cardService.getCards();
         System.out.println(Arrays.toString(cards.toArray()));
@@ -25,6 +26,12 @@ public class RestCardCtr {
     @GetMapping(value = "/card/{uuid}", produces = "application/json")
     public Card getCard(@PathVariable("uuid") String uuid) {
         return cardService.getCard(UUID.fromString(uuid));
+    }
+
+
+    @GetMapping (value = "/", produces = "text/html")
+    public String getAddCardHtml(Model model) {
+        return "html/addCard";
     }
 
     @PostMapping (value = "/addCard", produces = "application/json")
