@@ -1,0 +1,23 @@
+GET http://vps.cpe-sn.fr:8083/cards
+
+###
+
+GET http://127.0.0.1:8080/card/
+Accept: application/json
+
+###
+
+GET http://127.0.0.1:8080/addUser
+
+###
+
+GET http://127.0.0.1:8080/card/0
+Accept: application/json
+
+###
+
+GET http://127.0.0.1:8080/test/0
+Accept: application/json
+
+###
+
