@@ -1,4 +1,22 @@
-GET http://vps.cpe-sn.fr:8083/cards
+###
+GET http://localhost:8080/index
+
+###
+POST http://localhost:8080/card/addCard
+Content-Type: application/json
+
+{
+  "name": "first-card",
+  "description": "a test card",
+  "imageUrl": "",
+  "family": "fire",
+  "affinity": "water",
+  "hp": 100,
+  "attack": 45,
+  "defense": 30,
+  "energy": 25
+}
+
 
 ###
 
