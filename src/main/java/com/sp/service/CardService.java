@@ -1,7 +1,9 @@
 package com.sp.service;
 
 import com.sp.model.Card;
+import com.sp.model.User;
 import com.sp.repository.CardRepository;
+import com.sp.tools.CardBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,17 +23,26 @@ public class CardService {
     }
 
     public List<Card> getCards() {
-        Stream.iterate(0, i -> i + 1).limit(5).forEach(i -> {
-            Card card = Card.builder()
-                    .withName("Card " + i)
-                    .withFamily("Family " + i)
-                    .withDescription("Description " + i)
-                    .build();
-            cardRepository.save(card);
-        });
         List<Card> cards = new ArrayList<Card>();
         cardRepository.findAll().iterator().forEachRemaining(cards::add);
         return cards;
+    }
+
+    public void newUser(User user){
+        //Give him 5 random Cards
+        List<Card> cards = CardBuilder.generateRandomListFromTemplates(5);
+        this.setCards(user, cards);
+    }
+
+    private void setCards(User user, List<Card> cards) {
+        cards.forEach(card -> {
+            card.setOwnerUUID(user.getUUID());
+            cardRepository.save(card);
+        });
+    }
+
+    public List<Card> getCardsByOwnerUUID(UUID uuid){
+        return cardRepository.findByOwnerUUID(uuid);
     }
 
     public Card saveCard(Card card){

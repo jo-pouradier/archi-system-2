@@ -1,14 +1,19 @@
 package com.sp.model;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.List;
 import java.util.UUID;
-
+@Entity
 public class User implements OwnerUUID{
 
-
+    @Id
+    @GeneratedValue
     private UUID uuid;
     @Getter
     @Setter
@@ -20,7 +25,7 @@ public class User implements OwnerUUID{
     @Setter
     private String password;
 
-    private User(){
+    public User() {
 
     }
 
