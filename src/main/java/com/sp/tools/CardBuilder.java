@@ -29,7 +29,7 @@ public class CardBuilder {
                 .attack(RandomUtils.randomIntCallback(0, 100))
                 .defense(RandomUtils.randomIntCallback(0, 100))
                 .energy(RandomUtils.randomIntCallback(0, 100))
-                .imageUrl("aquagirl.jpg")
+                .imageUrl("images/aquagirl.jpg")
                 .build();
         CardTemplate cardTemplate2 = CardTemplate
                 .builder()
@@ -41,7 +41,7 @@ public class CardBuilder {
                 .attack(RandomUtils.randomIntCallback(0, 100))
                 .defense(RandomUtils.randomIntCallback(0, 100))
                 .energy(RandomUtils.randomIntCallback(0, 100))
-                .imageUrl("joke.jpg")
+                .imageUrl("images/joke.jpg")
                 .build();
         CardTemplate cardTemplate3 = CardTemplate
                 .builder()
@@ -53,7 +53,7 @@ public class CardBuilder {
                 .attack(RandomUtils.randomIntCallback(0, 100))
                 .defense(RandomUtils.randomIntCallback(0, 100))
                 .energy(RandomUtils.randomIntCallback(0, 100))
-                .imageUrl("catman.jpg")
+                .imageUrl("images/catman.jpg")
                 .build();
         CardTemplate cardTemplate4 = CardTemplate
                 .builder()
@@ -65,7 +65,7 @@ public class CardBuilder {
                 .attack(RandomUtils.randomIntCallback(0, 100))
                 .defense(RandomUtils.randomIntCallback(0, 100))
                 .energy(RandomUtils.randomIntCallback(0, 100))
-                .imageUrl("superalien.jpg")
+                .imageUrl("images/superalien.jpg")
                 .build();
         CardTemplate cardTemplate5 = CardTemplate
                 .builder()
@@ -77,7 +77,7 @@ public class CardBuilder {
                 .attack(RandomUtils.randomIntCallback(0, 100))
                 .defense(RandomUtils.randomIntCallback(0, 100))
                 .energy(RandomUtils.randomIntCallback(0, 100))
-                .imageUrl("wonderman.jpg")
+                .imageUrl("images/wonderman.jpg")
                 .build();
         CardTemplate cardTemplate6 = CardTemplate
                 .builder()
@@ -89,7 +89,7 @@ public class CardBuilder {
                 .attack(RandomUtils.randomIntCallback(0, 100))
                 .defense(RandomUtils.randomIntCallback(0, 100))
                 .energy(RandomUtils.randomIntCallback(0, 100))
-                .imageUrl("penguin.jpg")
+                .imageUrl("images/penguin.jpg")
                 .build();
         float amount = (float) (1.0/6.0);
         cardTemplates.put(cardTemplate1, amount);
