@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+    <h2>Register</h2>
+    <!-- simple register page -->
+    <form action="/register" method="post">
+        <div>
+            <label>Username:
+            <input type="text" name="username" placeholder="username" required="required"/>
+            </label>
+        </div>
+        <div>
+            <label>Password:
+            <input type="password" name="password" placeholder="password" required="required"/>
+            </label>
+        </div>
+        <div>
+            <label>Confirm Password:
+            <input type="password" name="confirmPassword" placeholder="confirm password" required="required"/>
+            </label>
+        </div>
+        <div>
+            <button type="button" onclick=login()>Log In</button>
+            <button type="button" onclick=cancelForm()>Cancel</button>
+        </div>
+    </form>
+
+    <script src="../js/login.js"></script>
+
+</body>
+</html>

@@ -9,8 +9,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.List;
 import java.util.UUID;
+
+@Builder(toBuilder = true, setterPrefix = "with")
 @Entity
 public class User implements OwnerUUID{
+
+    public static final User NULL_USER = User
+            .builder()
+            .withUuid(UUID.fromString("00000000-0000-0000-0000-000000000000"))
+            .withName("-1")
+            .withEmail("-1")
+            .withPassword("-1")
+            .build();
 
     @Id
     @GeneratedValue
@@ -25,10 +35,14 @@ public class User implements OwnerUUID{
     @Setter
     private String password;
 
-    public User() {
-
+    public User(){
     }
 
+    public User(UUID uuid, String name, String password, String email){
+        this.password = password;
+        this.name = name;
+        this.email = email;
+    }
     @Override
     public UUID getUUID() {
         return this.uuid;
