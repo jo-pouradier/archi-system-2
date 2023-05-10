@@ -1,6 +1,7 @@
 package com.sp.model;
 
 import com.sp.tools.Callback;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import java.util.UUID;
 
 @Builder(toBuilder = true)
+@AllArgsConstructor
 public class CardTemplate {
 
     @Id
