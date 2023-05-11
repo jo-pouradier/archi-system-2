@@ -62,3 +62,31 @@ Accept: text/html
         client.assert(response.body != "index"); // /!\ on ne verifie la difference avec le STRING "index" pas le fichier html
     })
 %}
+
+###
+//@name Test to get the login form
+
+POST http://127.0.0.1:8080/login-form
+Content-Type: application/json
+
+{
+    "email": "test",
+    "password": "test"
+}
+
+> {%
+    client.test("Request is 200", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+###
+//@name Test to get the register form
+POST http://localhost:8080/register-form
+Content-Type: application/json
+
+{
+    "username": "test",
+    "password": "test",
+      "email": "test"
+}

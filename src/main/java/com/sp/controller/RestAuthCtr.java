@@ -17,8 +17,8 @@ public class RestAuthCtr {
     private AuthService authService;
 
     @PostMapping(value = "/login-form")
-    public ResponseEntity login(@RequestBody Map<String,String> data) {
-        return ResponseEntity.ok().body("coucou");
+    public UUID login(@RequestBody Map<String,String> data) {
+        return authService.login(data.get("email"), data.get("password")); // on renvoie l'uuid ou null;
     }
 
     @PostMapping(value = "/register-form")
