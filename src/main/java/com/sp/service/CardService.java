@@ -3,14 +3,13 @@ package com.sp.service;
 import com.sp.model.Card;
 import com.sp.model.User;
 import com.sp.repository.CardRepository;
-import com.sp.tools.CardBuilder;
+import com.sp.tools.CardFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Stream;
 
 @Service
 public class CardService {
@@ -30,7 +29,7 @@ public class CardService {
 
     public void newUser(User user){
         //Give him 5 random Cards
-        List<Card> cards = CardBuilder.generateRandomListFromTemplates(5);
+        List<Card> cards = CardFactory.generateRandomListFromTemplates(5);
         this.setCards(user, cards);
     }
 

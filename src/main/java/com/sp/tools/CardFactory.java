@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class CardBuilder {
+public class CardFactory {
 
     // HashMap of card templates with probabilities of loot
     private static HashMap<CardTemplate, Float> cardTemplates = new HashMap<>();
