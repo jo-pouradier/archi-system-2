@@ -12,12 +12,9 @@ async function login(){
         },
         body: JSON.stringify(data)
     }).then(async function(response) {
-        let res = response.body.getReader();
-        console.log("coucoucopucou");
-        let resp = (await res.read()).value;
-        console.log("response1232315312" + resp);
+        console.log(response.body);
         if(response.ok) {
-            console.log("response" + (await res.read()));
+            console.log("response");
             try{
                 if(data !== "-1"){
                     document.cookie = "userId=" + await response.body + ";path=/";

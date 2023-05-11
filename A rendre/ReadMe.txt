@@ -2,8 +2,8 @@ Projet réalisé par : Pierre-Louis TELEP, Joseph Pouradier-Duteilk Hugues Farth
 
 Nos réalisations :
 
-- Réalisation d'un controller pour envoyer toutes les pages Html du site et gerer les requêtes de l'utilisateur
-- Réalisation de plusieurs RestContrôlers pour gérer les requêtes de l'utilisateur : - AuthController (pour authentifier l'utilisateur)
+- Réalisation d'un controller pour envoyer toutes les pages Html du site et gérer les requêtes de l'utilisateur
+- Réalisation de plusieurs RestControllers pour gérer les requêtes de l'utilisateur : - AuthController (pour authentifier l'utilisateur)
                                                                                      - UserController (pour gérer les requêtes liées à l'utilisateur)
                                                                                       - MarketController (pour gérer les requêtes liées au marché)
                                                                                       - CardController (pour gérer les requêtes liées aux cartes)
@@ -16,5 +16,10 @@ Nos réalisations :
 - Réalisation de plusieurs repositories liés aux services : - UserRepository (pour gérer les données liées à l'utilisateur)
                                                             - CardRepository (pour gérer les données liées aux cartes)
 
-- Réalisation de plusieurs modèles liées aux repositories : - Card (pour avoir un modèle des cartes)
-                                                            - User (pour avoir un modèle des utilisateurs)
+- Réalisation de plusieurs modèles et classes : - Card (pour avoir un objet carte)
+                                                - User (pour avoir un objet utilisateur)
+                                                - CardTemplate (pour avoir un objet template de carte par défaut)
+Les réalisations fonctionnelles :
+
+
+Les réalisations non fonctionnelles :
