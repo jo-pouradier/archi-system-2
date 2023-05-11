@@ -3,7 +3,7 @@ function isUserLoggedIn() {
     // if not, redirect to login page
     const user = document.cookie.indexOf('userId=');
     console.log(user);
-    if (user !== -1) {
+    if (user !== -1 || user !== undefined) {
         console.log(document.cookie)
         return true;
     } else {
