@@ -6,19 +6,32 @@ import com.sp.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class MarketService {
 
     @Autowired
     private CardService cardService;
-    
+
     @Autowired
     private UserService userService;
 
-    public boolean createTransaction(Transaction transaction) {
+    public Transaction createTransaction(Transaction transaction) {
+        User from = userService.getUser(transaction.getFromUserUUID());
+        Card card = cardService.getCard(transaction.getCardUUID());
+        if (from != null && card != null) {
+            if (cardService.getCardsByOwnerUUID(from.getUUID()).contains(card)) {
+                transaction.setTranscationUUID(UUID.randomUUID());
+                transaction.setStatus("pending");
+                return transaction;
+            }
+        }
+        return null;
+    }
 
-
-        return false;
+    public Transaction acceptTransaction(){
+        return null;
     }
 
 //    private final UserService userService;

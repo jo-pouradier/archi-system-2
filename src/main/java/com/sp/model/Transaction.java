@@ -8,13 +8,17 @@ import java.util.UUID;
 public class Transaction {
 
     @Getter
-    private UUID transcationUUID;
+    @Setter
+    private UUID transcationUUID = null;
     @Getter
-    private UUID cardUUID;
+    @Setter
+    private UUID cardUUID = null;
     @Getter
-    private UUID fromUserUUID;
+    @Setter
+    private UUID fromUserUUID = null;
     @Getter
-    private UUID toUserUUID;
+    @Setter
+    private UUID toUserUUID = null;
     @Getter
     @Setter
     private float price = 0;

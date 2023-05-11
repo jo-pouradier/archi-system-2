@@ -22,14 +22,17 @@ public class RestMarketCtr {
     Accepter une transaction
      */
 
-
     @Autowired
     private MarketService market;
 
     @PostMapping(value = "/createTransaction", produces = "application/json")
     public ResponseEntity createTransaction(@RequestBody Transaction transaction){
-        boolean allow = market.createTransaction(transaction);
-        return new ResponseEntity(HttpStatus.OK);
+        Transaction marketTransaction = market.createTransaction(transaction);
+        if (marketTransaction != null){
+            return new ResponseEntity(marketTransaction, HttpStatus.OK);
+        }else{
+            return new ResponseEntity("Transaction not allowed!",HttpStatus.FORBIDDEN);
+        }
     }
 
 

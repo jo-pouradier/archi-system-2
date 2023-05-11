@@ -11,18 +11,19 @@ import java.util.UUID;
 @Service
 public class UserService {
     @Autowired
-    private static UserRepository userRepository;
-    public static boolean addUser(User user) {
+    private UserRepository userRepository;
+
+    public boolean addUser(User user) {
         user.setUUID(UUID.randomUUID());
         userRepository.save(user);
         return true;
     }
 
-    public static boolean remUser(UUID uuid) {
+    public boolean remUser(UUID uuid) {
         return false;
     }
 
-    public static User getUser(UUID uuid) {
+    public User getUser(UUID uuid) {
         return userRepository.findById(uuid).orElse(null);
     }
 }
