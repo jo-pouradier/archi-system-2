@@ -1,11 +1,14 @@
 package com.sp.service;
 
+import com.sp.model.Card;
 import com.sp.model.User;
 import com.sp.repository.SimpleUUIDAbstractRepository;
 import com.sp.repository.UserRepository;
+import com.sp.tools.CardFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -25,5 +28,17 @@ public class UserService {
 
     public User getUser(UUID uuid) {
         return userRepository.findById(uuid).orElse(null);
+    }
+
+    public User getUser(String username) {
+        return userRepository.findByName(username);
+    }
+
+    public UUID existUser(String username, String password) {
+        User user = userRepository.findByName(username);
+        if (user != null) {
+            return user.getPassword().equals(password) ? user.getUUID() : null;
+        }
+        return null;
     }
 }
