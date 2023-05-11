@@ -1,22 +1,22 @@
 // import * as moduleForm from './moduleForm.js'
 
-function login(){
-    const username = document.getElementById("username").value;
+async function login(){
+    const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    const data = {username: username, password: password};
-    console.log(username, password);
-    fetch('/login-form', {
+    const data = {email: email, password: password};
+    console.log(email, password);
+    await fetch('/login-form', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
-    }).then(function(response) {
+    }).then(async function(response) {
         if(response.ok) {
-            console.log(response.body);
+            console.log("response" + await response.body.userId);
             try{
                 if(data !== "-1"){
-                    document.cookie = "userId=" + response.body.userId + ";path=/";
+                    document.cookie = "userId=" + await response.body.userId + ";path=/";
                     window.location.href = "/";
                 }
             } catch (e) {
