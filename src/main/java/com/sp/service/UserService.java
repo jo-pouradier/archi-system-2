@@ -32,4 +32,12 @@ public class UserService {
     public static User getUser(String username) {
         return userRepository.findByName(username);
     }
+
+    public static boolean existUser(String username, String password) {
+        User user = userRepository.findByName(username);
+        if (user != null) {
+            return user.getPassword().equals(password);
+        }
+        return false;
+    }
 }
