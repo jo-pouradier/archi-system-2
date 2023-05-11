@@ -32,11 +32,11 @@ public class UserService {
         return userRepository.findByName(username);
     }
 
-    public static boolean existUser(String username, String password) {
+    public static UUID existUser(String username, String password) {
         User user = userRepository.findByName(username);
         if (user != null) {
-            return user.getPassword().equals(password);
+            return user.getPassword().equals(password) ? user.getUUID() : null;
         }
-        return false;
+        return null;
     }
 }
