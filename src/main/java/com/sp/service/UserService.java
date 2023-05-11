@@ -46,4 +46,23 @@ public class UserService {
     public User getUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }
+
+    public boolean debit(UUID uuid, float value) {
+        User user = getUser(uuid);
+        float balance = user.getBalance();
+        if (balance-value>=0.0){
+            user.setBalance(balance-value);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean depot(UUID uuid, float value){
+        float balance = getUser(uuid).getBalance();
+        getUser(uuid).setBalance(balance+value);
+        return getUser(uuid).getBalance()==balance+value;
+    }
 }
+
+
+
