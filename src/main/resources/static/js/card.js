@@ -26,7 +26,7 @@ async function sendForm(){
 }
 
 async function getCards(){
-    const url = 'http://vps.cpe-sn.fr:8083/cards';
+    const url = '/card';
     const context = {
         method: 'GET'
     };
