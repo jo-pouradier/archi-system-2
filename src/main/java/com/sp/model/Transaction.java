@@ -32,4 +32,16 @@ public class Transaction {
     @Setter
     private String status = "uncomplete";
 
+
+    public boolean isAccepted() {
+        return status.equals("accepted");
+    }
+
+    public boolean isPending() {
+        return status.equals("pending");
+    }
+
+    public boolean isUncomplete() {
+        return status.equals("uncomplete");
+    }
 }

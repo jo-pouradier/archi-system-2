@@ -30,7 +30,7 @@ public class MarketService {
         User from = userService.getUser(transaction.getFromUserUUID());
         Card card = cardService.getCard(transaction.getCardUUID());
         if (from != null && card != null) {
-            if(!existTransaction(from.getUUID(), card.getUUID()))
+            if(existTransaction(from.getUUID(), card.getUUID()))
                 return null;
             if (cardService.getCardsByOwnerUUID(from.getUUID()).contains(card)) {
                 transaction.setStatus("pending");

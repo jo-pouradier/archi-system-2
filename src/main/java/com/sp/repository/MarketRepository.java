@@ -21,4 +21,13 @@ public interface MarketRepository extends CrudRepository<Transaction, UUID> {
         });
         return transactions;
     }
+
+    default Transaction findByFromUserUUIDAndCardUUID(UUID from, UUID card){
+        for (Transaction transaction : this.findByOwnerUUID(from)) {
+            if(transaction.getCardUUID().equals(card)){
+                return transaction;
+            }
+        }
+        return null;
+    }
 }
