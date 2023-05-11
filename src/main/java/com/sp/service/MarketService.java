@@ -97,10 +97,16 @@ public class MarketService {
         User to = userService.getUser(transaction.getToUserUUID());
         Card card = cardService.getCard(transaction.getCardUUID());
         if (from != null && card != null && to != null) {
+            Transaction valid =  getByFromAndCard(from.getUUID(), card.getUUID(), "pending");
+            if (valid == null)
+                return null;
+            if (valid.getPrice() > to.getBalance())
+                return null;
             if (cardService.getCardsByOwnerUUID(from.getUUID()).contains(card)) {
                 transaction.setStatus("accepted");
                 cardService.changeOwner(card, to);
-
+                userService.debit(to.getUUID(), valid.getPrice());
+                userService.depot(from.getUUID(), valid.getPrice());
                 return transaction;
             }
         }
