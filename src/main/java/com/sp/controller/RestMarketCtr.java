@@ -27,6 +27,7 @@ public class RestMarketCtr {
 
     @PostMapping(value = "/createTransaction", produces = "application/json")
     public ResponseEntity createTransaction(@RequestBody Transaction transaction){
+        System.out.println(transaction);
         Transaction marketTransaction = market.createTransaction(transaction);
         if (marketTransaction != null){
             return new ResponseEntity(marketTransaction, HttpStatus.OK);
@@ -41,7 +42,7 @@ public class RestMarketCtr {
         if (marketTransaction != null){
             return new ResponseEntity(marketTransaction, HttpStatus.OK);
         }else{
-            return new ResponseEntity("Transaction not allowed!",HttpStatus.FORBIDDEN);
+            return new ResponseEntity("Not allowed!",HttpStatus.FORBIDDEN);
         }
     }
 }

@@ -15,11 +15,12 @@ import java.util.UUID;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
-
-    public boolean addUser(User user) {
-        user.setUUID(UUID.randomUUID());
-        userRepository.save(user);
-        return true;
+    @Autowired
+    private CardService cardService;
+    public UUID addUser(User user) {
+        user = userRepository.save(user);
+        cardService.newUserSet(user);
+        return user.getUUID();
     }
 
     public boolean remUser(UUID uuid) {
@@ -40,5 +41,9 @@ public class UserService {
             return user.getPassword().equals(password) ? user.getUUID() : null;
         }
         return null;
+    }
+
+    public User getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 }

@@ -24,7 +24,7 @@ public class RandomUtils {
 
     //Generate a random float between a and b
     public static float randomFloat(float a, float b) {
-        return (float) (Math.random() * (b - a + 1) + a);
+        return (float) (Math.random() * (b - a) + a);
     }
 
     // return a callback of a random float between a and b

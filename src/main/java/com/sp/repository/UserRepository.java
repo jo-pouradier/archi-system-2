@@ -22,5 +22,15 @@ public interface UserRepository extends CrudRepository<User, UUID> {
         users.add(null);
         return users.get(0);
     }
-
+    default User findByEmail(String email){
+        List<User> users = new ArrayList<User>();
+        this.findAll().iterator().forEachRemaining(user -> {
+            if(user.getEmail().equals(email)){
+                users.add(user);
+            }
+        });
+        users.add(null);
+        System.out.println(users.get(0));
+        return users.get(0);
+    }
 }

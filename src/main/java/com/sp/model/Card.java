@@ -2,10 +2,7 @@ package com.sp.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.UUID;
 @Builder(toBuilder = true)
 @AllArgsConstructor
@@ -34,6 +31,9 @@ public class Card implements OwnerUUID{
     private UUID ownerUUID;
     @Getter
     private String name;
+
+    // SET as VARCHAR 1024
+    @Column(length = 1024)
     @Getter
     private String description;
     @Getter

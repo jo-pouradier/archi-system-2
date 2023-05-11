@@ -21,7 +21,6 @@ public class RestCardCtr {
     @GetMapping(value = "/getCards", produces = "application/json")
     public List<Card> getCards() {
         List<Card> cards = cardService.getCards();
-        System.out.println(Arrays.toString(cards.toArray()));
         return cards;
     }
     @GetMapping(value = "/card/{uuid}", produces = "application/json")

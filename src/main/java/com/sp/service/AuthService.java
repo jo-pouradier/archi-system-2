@@ -15,8 +15,8 @@ public class AuthService {
         return true;
     }
 
-    public UUID login(String username, String password) {
-        User user = userService.getUser(username);
+    public UUID login(String email, String password) {
+        User user = userService.getUserByEmail(email);
         if (user != null) {
             if (user.getPassword().equals(password)) {
                 return user.getUUID();
@@ -26,7 +26,7 @@ public class AuthService {
     }
 
     public UUID register(String username, String password, String email) {
-        return userService.addUser(new User(username, password, email)) ? userService.getUser(username).getUUID() : null;
+        return userService.addUser(new User(username, password, email));
     }
     public static Integer existUser(String username, String password) {
         return 1;

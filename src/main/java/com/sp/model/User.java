@@ -55,4 +55,13 @@ public class User implements OwnerUUID{
         this.uuid = uuid;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "uuid=" + uuid +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }
