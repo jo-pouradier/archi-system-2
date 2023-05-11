@@ -3,10 +3,16 @@ package com.sp.model;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.UUID;
 
+@Entity
 public class Transaction {
 
+    @Id
+    @GeneratedValue
     @Getter
     @Setter
     private UUID transcationUUID = null;
