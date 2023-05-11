@@ -16,7 +16,6 @@ public class MarketService {
 
     @Autowired
     private UserService userService;
-
     public Transaction createTransaction(Transaction transaction) {
         User from = userService.getUser(transaction.getFromUserUUID());
         Card card = cardService.getCard(transaction.getCardUUID());
