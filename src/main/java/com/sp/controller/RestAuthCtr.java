@@ -23,8 +23,8 @@ public class RestAuthCtr {
     }
 
     @PostMapping(value = "/register-form", produces = "text/html")
-    public UUID register(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("email") String email) {
-        return authService.register(username, password, email); // on renvoie l'uuid ou null;
+    public UUID register(@RequestBody Map<String,String> data) {
+        return authService.register(data.get("username"), data.get("password"), data.get("email")); // on renvoie l'uuid ou null;
     }
 
 
