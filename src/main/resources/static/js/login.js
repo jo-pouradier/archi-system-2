@@ -14,8 +14,9 @@ function login(){
     }).then(function(response) {
         if(response.ok) {
             console.log(response.body);
+            let responseJson = response.json();
             try{
-                if(response.body.userId !== null){
+                if(responseJson !== "-1"){
                     document.cookie = "userId=" + response.body.userId + ";path=/";
                     window.location.href = "/";
                 }
