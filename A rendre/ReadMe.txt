@@ -20,6 +20,15 @@ Nos réalisations :
                                                 - User (pour avoir un objet utilisateur)
                                                 - CardTemplate (pour avoir un objet template de carte par défaut)
 Les réalisations fonctionnelles :
+* Récupérer un/des cartes au format json
+* échange de carte casiment fonctionnel (manque de sécurités)
+* auth fonctionnel, non implémenté partouts
+* les autowire/repositories fonctionnent
+* les pages principales sont accessibles
+* architecture très évolutive
+
 
 
 Les réalisations non fonctionnelles :
+* auth coté client non fonctionnel, problème de json non résolu
+* sécurité mot de passe, en claire pour le moment
