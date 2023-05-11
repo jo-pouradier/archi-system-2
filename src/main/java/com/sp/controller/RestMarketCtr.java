@@ -51,6 +51,17 @@ public class RestMarketCtr {
         }
     }
 
+    @PostMapping(value = "/acceptTransaction", produces = "application/json")
+    public ResponseEntity acceptTransaction(@RequestBody Transaction transaction){
+        System.out.println(transaction);
+        Transaction marketTransaction = market.acceptTransaction(transaction);
+        if (marketTransaction != null){
+            return new ResponseEntity(marketTransaction, HttpStatus.OK);
+        }else{
+            return new ResponseEntity("Transaction not allowed!",HttpStatus.FORBIDDEN);
+        }
+    }
+
     @PostMapping(value= "/cancelTransaction", produces = "application/json")
     public ResponseEntity cancelTransaction(@RequestBody Transaction transaction){
         Transaction marketTransaction = market.cancelTransaction(transaction);
