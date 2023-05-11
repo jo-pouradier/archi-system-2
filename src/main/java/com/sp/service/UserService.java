@@ -13,7 +13,6 @@ import java.util.UUID;
 
 @Service
 public class UserService {
-    @Autowired
     private static UserRepository userRepository;
     public static boolean addUser(User user) {
         user.setUUID(UUID.randomUUID());
