@@ -32,6 +32,9 @@ public class RestMarketCtr {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-
-
+    @PostMapping(value= "/cancelTransaction", produces = "application/json")
+    public ResponseEntity cancelTransaction(@RequestBody Transaction transaction){
+        boolean allow = market.cancelTransaction(transaction);
+        return new ResponseEntity(HttpStatus.OK);
+    }
 }

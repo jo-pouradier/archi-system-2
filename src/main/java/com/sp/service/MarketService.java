@@ -6,6 +6,8 @@ import com.sp.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class MarketService {
 
@@ -20,6 +22,15 @@ public class MarketService {
 
         return false;
     }
+
+    public boolean cancelTransaction(Transaction transaction) {
+        UUID from = transaction.getFromUserUUID();
+
+
+        return false;
+    }
+
+
 
 //    private final UserService userService;
 //    private Card card;
