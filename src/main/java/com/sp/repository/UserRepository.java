@@ -1,5 +1,6 @@
 package com.sp.repository;
 
+import com.sp.model.Card;
 import com.sp.model.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -19,7 +20,7 @@ public interface UserRepository extends CrudRepository<User, UUID> {
             }
         });
         users.add(null);
-        User user = users.get(0);
-        return user;
+        return users.get(0);
     }
+
 }

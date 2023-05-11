@@ -27,7 +27,7 @@ public class CardService {
         return cards;
     }
 
-    public void newUser(User user){
+    public void newUserSet(User user){
         //Give him 5 random Cards
         List<Card> cards = CardFactory.generateRandomListFromTemplates(5);
         this.setCards(user, cards);
