@@ -38,7 +38,8 @@ public class User implements OwnerUUID{
     public User(){
     }
 
-    public User(UUID uuid, String name, String password, String email){
+    public User(String name, String password, String email){
+        this.uuid = UUID.randomUUID();
         this.password = password;
         this.name = name;
         this.email = email;
