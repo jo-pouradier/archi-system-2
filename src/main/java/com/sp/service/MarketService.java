@@ -49,7 +49,7 @@ public class MarketService {
         return getByFromAndCard(from, card) != null;
     }
 
-    public boolean isValidTranscation(Transaction transaction) {
+    public boolean isValidTransaction(Transaction transaction) {
         Transaction valid = marketRepository.findById(transaction.getTranscationUUID()).orElse(null);
         if (valid == null)
             return false;
@@ -60,7 +60,7 @@ public class MarketService {
     }
 
     public Transaction cancelTransaction(Transaction transaction) {
-        if (!isValidTranscation(transaction))
+        if (!isValidTransaction(transaction))
             return null;
         User from = userService.getUser(transaction.getFromUserUUID());
         Card card = cardService.getCard(transaction.getCardUUID());
