@@ -14,7 +14,6 @@ function login(){
     }).then(function(response) {
         if(response.ok) {
             console.log(response.body);
-            let data = JSON.parse(response.body);
             try{
                 if(data !== "-1"){
                     document.cookie = "userId=" + response.body.userId + ";path=/";
@@ -30,4 +29,7 @@ function login(){
             return null;
         }
     })
+}
+function  register() {
+    window.location.href = "/register";
 }

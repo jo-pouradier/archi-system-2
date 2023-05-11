@@ -16,13 +16,13 @@ public class RestAuthCtr {
     @Autowired
     private AuthService authService;
 
-    @PostMapping(value = "/login-form", produces = "text/html")
-    public ResponseEntity login(@RequestBody Map<String,String> data) {
+    @PostMapping(value = "/login-form")
+    public UUID login(@RequestBody Map<String,String> data) {
 
-        return new ResponseEntity(authService.login(data.get("username"), data.get("password")), HttpStatus.OK); // on renvoie l'uuid ou null;
+        return authService.login(data.get("username"), data.get("password")); // on renvoie l'uuid ou null;
     }
 
-    @PostMapping(value = "/register-form", produces = "text/html")
+    @PostMapping(value = "/register-form")
     public UUID register(@RequestBody Map<String,String> data) {
         return authService.register(data.get("username"), data.get("password"), data.get("email")); // on renvoie l'uuid ou null;
     }
