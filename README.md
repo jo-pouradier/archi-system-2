@@ -26,9 +26,9 @@
 -> 1 on arrive sur '/' (index) c'est une page utilisateur avec ses cartes, si on le cookie de log on reste sion on redirige vers '/login'. 
    - onload on verifie les cookies si oui on reste, si non on redirige vers '/login'.
 -> 2 on arrive sur '/login' c'est une page de login, si on a le cookie de log on redirige vers '/' sinon on reste et on se log.  
--> 3 button SELL pour aller sur la page de la carte pour la vendre.  
-   - GET sur '/card/gerCards' pour avoir les cartes dispo. et les afficher en liste.
+-> 3 button SELL pour aller sur la page de la carte pour la vendre.
+     - GET sur '/card/gerCards' pour avoir les cartes dispo. et les afficher en liste.  
 -> 4 Sur '/' on peut vendre ses cartes pour avoir de la tune.
    - affichage de la carte unique avec un GET sur '/card/:id'
-   - POST 
--> 5 Sur '/market' on arrive sur une liste de cartes que l'on peut acheter.  
+   - POST sur '/sell/:id' pour mettre en vente la carte.  
+→ 5 Sur '/market' on arrive sur une liste de cartes que l'on peut acheter.  
