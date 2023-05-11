@@ -1,5 +1,6 @@
 package com.sp.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Builder(toBuilder = true, setterPrefix = "with")
+@AllArgsConstructor
 @Entity
 public class User implements OwnerUUID{
 
