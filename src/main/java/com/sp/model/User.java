@@ -36,6 +36,9 @@ public class User implements OwnerUUID{
     @Getter
     @Setter
     private String password;
+    @Getter
+    @Setter
+    private float balance = 0;
 
     public User(){
     }
