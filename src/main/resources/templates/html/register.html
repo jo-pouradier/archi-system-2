@@ -3,39 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" />
+    <script th:src="@{/js/register.js}"></script>
 </head>
 <body>
     <h2>Register</h2>
     <!-- simple register page -->
-    <form action="/register" method="post">
+    <form action="" method="post">
         <div>
             <label>Username:
-            <input type="text" name="username" placeholder="username" required="required"/>
+            <input type="text" id="username" name="username" placeholder="username" required="required"/>
             </label>
         </div>
         <div>
             <label>Email:
-                <input type="email" name="email" placeholder="email@email.email" required="required"/>
+                <input type="email" id="email" name="email" placeholder="email@email.email" required="required"/>
             </label>
         </div>
         <div>
             <label>Password:
-            <input type="password" name="password" placeholder="password" required="required"/>
+            <input type="password" id="password1" name="password" placeholder="password" required="required"/>
             </label>
         </div>
         <div>
             <label>Confirm Password:
-            <input type="password" name="confirmPassword" placeholder="confirm password" required="required"/>
+            <input type="password" id="password2" name="confirmPassword" placeholder="confirm password" required="required"/>
             </label>
         </div>
         <div>
-            <button type="button" onclick=login()>Log In</button>
+            <button type="button" onclick=register()>register</button>
             <button type="button" onclick=cancelForm()>Cancel</button>
         </div>
     </form>
 
-    <script src="../js/login.js"></script>
 
 </body>
 </html>

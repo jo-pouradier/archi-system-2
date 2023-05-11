@@ -1,7 +1,7 @@
 function isUserLoggedIn() {
     // use cookie to check if user is logged in
     // if not, redirect to login page
-    var user = document.cookie.indexOf('userID=');
+    const user = document.cookie.indexOf('userId=');
     console.log(user);
     if (user !== -1) {
         console.log(document.cookie)
