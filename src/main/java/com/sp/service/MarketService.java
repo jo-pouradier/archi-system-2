@@ -30,6 +30,19 @@ public class MarketService {
         return null;
     }
 
+    public Transaction cancelTransaction(Transaction transaction) {
+        User from = userService.getUser(transaction.getFromUserUUID());
+        Card card = cardService.getCard(transaction.getCardUUID());
+        if (from != null && card != null) {
+            if (cardService.getCardsByOwnerUUID(from.getUUID()).contains(card)) {
+                transaction.setStatus("canceled");
+                return transaction;
+            }
+        }
+        return null;
+    }
+
+
     public Transaction acceptTransaction(){
         return null;
     }
