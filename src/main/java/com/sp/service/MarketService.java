@@ -41,13 +41,4 @@ public class MarketService {
         }
         return null;
     }
-
-
-    public Transaction acceptTransaction(){
-        return null;
-    }
-
-    public boolean cancelTransaction(Transaction transaction) {
-        return false;
-    }
 }
