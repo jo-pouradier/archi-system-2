@@ -1,6 +1,7 @@
 package com.sp.repository;
 
 import com.sp.model.Card;
+import com.sp.model.Transaction;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -19,5 +20,9 @@ public interface CardRepository extends CrudRepository<Card, UUID> {
             }
         });
         return cards;
+    }
+
+    default Card update(Card card) {
+        return this.save(card);
     }
 }

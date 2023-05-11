@@ -22,9 +22,10 @@ public interface MarketRepository extends CrudRepository<Transaction, UUID> {
         return transactions;
     }
 
-    default Transaction findByFromUserUUIDAndCardUUID(UUID from, UUID card){
+
+    default Transaction findByFromUserUUIDAndCardUUID(UUID from, UUID card, String status){
         for (Transaction transaction : this.findByOwnerUUID(from)) {
-            if(transaction.getCardUUID().equals(card)){
+            if(transaction.getCardUUID().equals(card) && transaction.getStatus().equals(status)){
                 return transaction;
             }
         }

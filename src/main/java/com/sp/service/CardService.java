@@ -56,4 +56,8 @@ public class CardService {
         cardRepository.delete(card);
     }
 
+    public void changeOwner(Card card, User to) {
+        card.setOwnerUUID(to.getUUID());
+        cardRepository.update(card);
+    }
 }

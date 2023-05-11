@@ -54,7 +54,7 @@ public class RestMarketCtr {
     @PostMapping(value = "/acceptTransaction", produces = "application/json")
     public ResponseEntity acceptTransaction(@RequestBody Transaction transaction){
         System.out.println(transaction);
-        Transaction marketTransaction = market.createTransaction(transaction);
+        Transaction marketTransaction = market.acceptTransaction(transaction);
         if (marketTransaction != null){
             return new ResponseEntity(marketTransaction, HttpStatus.OK);
         }else{
