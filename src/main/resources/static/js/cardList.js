@@ -34,27 +34,43 @@ let cardList = [
         },
 
     ]
-let template = document.querySelector("#row");
 
-for(const card of cardList){
-    let clone = document.importNode(template.content, true);
-
-    newContent= clone.firstElementChild.innerHTML
-                .replace(/{{family_src}}/g, card.family_src)
-                .replace(/{{family_name}}/g, card.family_name)
-                .replace(/{{img_src}}/g, card.img_src)
-                .replace(/{{name}}/g, card.name)
-                .replace(/{{description}}/g, card.description)
-                .replace(/{{hp}}/g, card.hp)
-                .replace(/{{energy}}/g, card.energy)
-                .replace(/{{attack}}/g, card.attack)
-                .replace(/{{defense}}/g, card.defense)
-                .replace(/{{price}}/g, card.price);
-    clone.firstElementChild.innerHTML= newContent;
-
-    let cardContainer= document.querySelector("#tableContent");
-    cardContainer.appendChild(clone);
+async function getUserCards(){
+    let userUuid = document.cookie.indexOf('userID=');
+    let response = await fetch("/card/getCardsByOwnerUUID/"+userUuid);
+    if (response.status !== 200) {
+        console.log("Error fetching cards");
+        return null;
+    }
+    return await response.json();
 }
+
+async function displayUserCard(){
+    let userCards = await getUserCards();
+    let template = document.querySelector("#row");
+
+    let newContent;
+    for (const card of userCards) {
+        let clone = document.importNode(template.content, true);
+
+        newContent = clone.firstElementChild.innerHTML
+            .replace(/{{family_name}}/g, card.family_name)
+            .replace(/{{img_src}}/g, card.img_src)
+            .replace(/{{name}}/g, card.name)
+            .replace(/{{description}}/g, card.description)
+            .replace(/{{hp}}/g, card.hp)
+            .replace(/{{energy}}/g, card.energy)
+            .replace(/{{attack}}/g, card.attack)
+            .replace(/{{defense}}/g, card.defense)
+            .replace(/{{price}}/g, card.price);
+        clone.firstElementChild.innerHTML = newContent;
+
+        let cardContainer = document.querySelector("#tableContent");
+        cardContainer.appendChild(clone);
+    }
+}
+
+displayUserCard().then(r => console.log("Cards displayed"));
 
 
 

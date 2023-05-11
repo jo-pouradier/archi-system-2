@@ -29,6 +29,10 @@ public class RestCardCtr {
         return cardService.getCard(UUID.fromString(uuid));
     }
 
+    @GetMapping(value = "/getCardsByOwnerUUID/{uuid}", produces = "application/json")
+    public List<Card> getCardsByOwnerUUID(@PathVariable("uuid") String uuid) {
+        return cardService.getCardsByOwnerUUID(UUID.fromString(uuid));
+    }
 
 //    @GetMapping (value = "/", produces = "text/html")
 //    public ModelAndView getAddCardHtml(Model model) {
