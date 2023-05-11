@@ -12,11 +12,15 @@ async function login(){
         },
         body: JSON.stringify(data)
     }).then(async function(response) {
+        let res = response.body.getReader();
+        console.log("coucoucopucou");
+        let resp = (await res.read()).value;
+        console.log("response1232315312" + resp);
         if(response.ok) {
-            console.log("response" + await response.body.userId);
+            console.log("response" + (await res.read()));
             try{
                 if(data !== "-1"){
-                    document.cookie = "userId=" + await response.body.userId + ";path=/";
+                    document.cookie = "userId=" + await response.body + ";path=/";
                     window.location.href = "/";
                 }
             } catch (e) {
