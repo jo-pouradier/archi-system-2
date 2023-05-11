@@ -37,7 +37,11 @@ public class RestMarketCtr {
 
     @PostMapping(value= "/cancelTransaction", produces = "application/json")
     public ResponseEntity cancelTransaction(@RequestBody Transaction transaction){
-        boolean allow = market.cancelTransaction(transaction);
-        return new ResponseEntity(HttpStatus.OK);
+        Transaction marketTransaction = market.cancelTransaction(transaction);
+        if (marketTransaction != null){
+            return new ResponseEntity(marketTransaction, HttpStatus.OK);
+        }else{
+            return new ResponseEntity("Transaction not allowed!",HttpStatus.FORBIDDEN);
+        }
     }
 }
