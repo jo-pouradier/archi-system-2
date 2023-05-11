@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <title>Welcome</title>
   <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
-
+	<script th:src="@{/js/auth.js}"></script>
   </head>
-  <body>	
+  <body onload="isUserLoggedIn()">
   		<h1> THIS IS A DEFAULT HEADER</h1>
   	<h1>Welcome</h1>
   	<h2 th:utext="${message}">..!..</h2>
