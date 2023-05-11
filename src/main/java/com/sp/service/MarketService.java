@@ -3,13 +3,19 @@ package com.sp.service;
 import com.sp.model.Card;
 import com.sp.model.Transaction;
 import com.sp.model.User;
+import com.sp.repository.MarketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
 public class MarketService {
+
+    @Autowired
+    private MarketRepository market;
 
     @Autowired
     private CardService cardService;
@@ -40,5 +46,11 @@ public class MarketService {
             }
         }
         return null;
+    }
+
+    public List<Transaction> getTransactions() {
+        List<Transaction> transactions = new ArrayList<Transaction>();
+        market.findAll().iterator().forEachRemaining(transactions::add);
+        return transactions;
     }
 }

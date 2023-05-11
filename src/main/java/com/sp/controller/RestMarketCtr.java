@@ -2,6 +2,7 @@ package com.sp.controller;
 
 import com.sp.model.Card;
 import com.sp.model.Transaction;
+import com.sp.repository.MarketRepository;
 import com.sp.service.CardService;
 import com.sp.service.MarketService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -24,6 +26,19 @@ public class RestMarketCtr {
 
     @Autowired
     private MarketService market;
+
+    @Autowired
+    private MarketRepository marketrepo;
+
+    @GetMapping(value = "/displayMarket", produces = "application/json")
+    public ResponseEntity displayMarket() {
+        List<Transaction> marketTransaction = market.getTransactions();
+        if(marketTransaction != null){
+            return new ResponseEntity(marketTransaction, HttpStatus.OK);
+        } else {
+            return new ResponseEntity("Display not allowed", HttpStatus.FORBIDDEN);
+        }
+    }
 
     @PostMapping(value = "/createTransaction", produces = "application/json")
     public ResponseEntity createTransaction(@RequestBody Transaction transaction){
