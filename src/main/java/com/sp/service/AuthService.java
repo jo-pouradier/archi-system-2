@@ -28,4 +28,7 @@ public class AuthService {
     public UUID register(String username, String password, String email) {
         return userService.addUser(new User(username, password, email)) ? userService.getUser(username).getUUID() : null;
     }
+    public static Integer existUser(String username, String password) {
+        return 1;
+    }
 }
