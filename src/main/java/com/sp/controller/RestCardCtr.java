@@ -5,6 +5,7 @@ import com.sp.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Arrays;
 import java.util.List;
@@ -29,10 +30,12 @@ public class RestCardCtr {
     }
 
 
-    @GetMapping (value = "/", produces = "text/html")
-    public String getAddCardHtml(Model model) {
-        return "html/addCard";
-    }
+//    @GetMapping (value = "/", produces = "text/html")
+//    public ModelAndView getAddCardHtml(Model model) {
+//        ModelAndView modelAndView = new ModelAndView();
+//        modelAndView.setViewName("html/cardList.html");
+//        return modelAndView;
+//    }
 
     @PostMapping (value = "/addCard", produces = "application/json")
     public Card addCard(@RequestBody Card card){
