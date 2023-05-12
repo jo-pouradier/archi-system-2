@@ -1,7 +1,10 @@
 package com.sp.controller;
 
 import com.sp.model.User;
+import com.sp.model.UserDTO;
+import com.sp.model.UserRegisterDTO;
 import com.sp.service.AuthService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,9 +30,13 @@ public class RestAuthCtr {
     }
 
     @PostMapping(value = "/register-form")
-    public User register(@RequestBody Map<String,String> data) {
-        return authService.register(data.get("username"), data.get("password"), data.get("email")); // on renvoie l'uuid ou null;
+    public UserDTO register(@RequestBody UserRegisterDTO data) {
+        User user = authService.register(data.getUsername(),data.getPassword(), data.getEmail()); // on renvoie l'uuid ou null;
+        UserDTO userDTO = new UserDTO();
+        BeanUtils.copyProperties(user, userDTO);
+        return userDTO;
     }
+
 
 
     // @GetMapping("/write-spring-cookie")
@@ -37,3 +44,4 @@ public class RestAuthCtr {
 
 
 }
+
