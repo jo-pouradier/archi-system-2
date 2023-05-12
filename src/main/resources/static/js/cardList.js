@@ -34,10 +34,27 @@ let cardList = [
         },
 
     ]
-
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = document.cookie;
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) === 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
 async function getUserCards(){
-    let userUuid = document.cookie.indexOf('userID=');
-    let response = await fetch("/card/getCardsByOwnerUUID/"+userUuid);
+    let user = getCookie('user');
+    console.log(user)
+    user = JSON.parse(user);
+    console.log(user);
+    let response = await fetch("/card/getCardsByOwnerUUID/"+user["uuid"]);
     if (response.status !== 200) {
         console.log("Error fetching cards");
         return null;
