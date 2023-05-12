@@ -1,5 +1,6 @@
 package com.sp.controller;
 
+import com.sp.model.User;
 import com.sp.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,13 +18,13 @@ public class RestAuthCtr {
     private AuthService authService;
 
     @PostMapping(value = "/login-form")
-    public ResponseEntity<?> login(@RequestBody Map<String,String> data) {
-        //authService.login(data.get("email"), data.get("password"))
-        return new ResponseEntity<String>("coucou",HttpStatus.OK); // on renvoie l'uuid ou null;
+    public User login(@RequestBody Map<String,String> data) {
+        return authService.login(data.get("email"), data.get("password"));
+//        return new ResponseEntity<String>("coucou",HttpStatus.OK); // on renvoie l'uuid ou null;
     }
 
     @PostMapping(value = "/register-form")
-    public UUID register(@RequestBody Map<String,String> data) {
+    public User register(@RequestBody Map<String,String> data) {
         return authService.register(data.get("username"), data.get("password"), data.get("email")); // on renvoie l'uuid ou null;
     }
 

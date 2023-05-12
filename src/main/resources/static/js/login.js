@@ -12,13 +12,14 @@ async function login(){
         },
         body: JSON.stringify(data)
     }).then(async function(response) {
+        console.log(response);
         console.log(response.body);
         if(response.ok) {
-            console.log("response");
+            console.log("ok");
             try{
                 if(data !== "-1"){
                     document.cookie = "userId=" + await response.body + ";path=/";
-                    window.location.href = "/";
+                    // window.location.href = "/";
                 }
             } catch (e) {
                 console.log(e);
