@@ -22,7 +22,7 @@ function register(){
                 try {
                     if (data !== "-1") {
                         document.cookie = "userId=" + response.body + ";path=/";
-                        window.location.href = "/login";
+                        window.location.href = "/html/login.html";
                     }
                 } catch (e) {
                     console.log(e);
