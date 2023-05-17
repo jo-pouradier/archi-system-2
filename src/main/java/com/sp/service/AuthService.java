@@ -15,17 +15,17 @@ public class AuthService {
         return true;
     }
 
-    public UUID login(String email, String password) {
+    public User login(String email, String password) {
         User user = userService.getUserByEmail(email);
         if (user != null) {
             if (user.getPassword().equals(password)) {
-                return user.getUUID();
+                return user;
             }
         }
         return null;
     }
 
-    public UUID register(String username, String password, String email) {
+    public User register(String username, String password, String email) {
         return userService.addUser(new User(username, password, email));
     }
     public static Integer existUser(String username, String password) {

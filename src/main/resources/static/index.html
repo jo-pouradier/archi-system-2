@@ -9,9 +9,9 @@
 	<!-- Site Properties -->
 	<title>Grid Example - Semantic</title>
 
-	<link rel="stylesheet" type="text/css" th:href="@{../lib/Semantic-UI-CSS-master/semantic.min.css}">
-	<link rel="stylesheet" type="text/css" th:href="@{../css/custom.css}">
-	<script th:src="@{../js/auth.js}"></script>
+	<link rel="stylesheet" type="text/css" href="/lib/Semantic-UI-CSS-master/semantic.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/custom.css">
+	<script src="/js/auth.js"></script>
 
 
 </head>
@@ -19,10 +19,11 @@
 <body onload="isUserLoggedIn()">
 <div class="ui clearing segment">
 	<h3 class="ui right floated header">
+		<a href="/html/addCard.html">Add Card</a>
 		<i class="user circle outline icon"></i>
 		<div class="content">
 			<span id="userNameId">Jdoe</span>
-			<div class="sub header"><span>5000</span>$</div>
+			<div class="sub header"><span id="Balance">5000</span>$</div>
 		</div>
 	</h3>
 
@@ -162,9 +163,9 @@
 
 </div>
 
-<script th:src="@{../lib/jquery-3.3.1.min.js}"></script>
-<script th:src="@{../lib/Semantic-UI-CSS-master/semantic.js}"></script>
-<script th:src="@{../js/cardList.js}"></script>
+<script src="/lib/jquery-3.3.1.min.js"></script>
+<script src="/lib/Semantic-UI-CSS-master/semantic.js"></script>
+<script src="/js/cardList.js"></script>
 
 
 

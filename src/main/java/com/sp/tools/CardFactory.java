@@ -102,6 +102,7 @@ public class CardFactory {
 
     public static List<Card> generateRandomListFromTemplates(int size){
         List<Card> cards = new ArrayList<>();
+        System.out.println("size : " + size);
         for(int i = 0; i < size; i++){
             cards.add(generateRandomFromTemplates());
         }

@@ -21,8 +21,8 @@ function register(){
                 console.log(response.body);
                 try {
                     if (data !== "-1") {
-                        document.cookie = "userId=" + response.body.userId + ";path=/";
-                        window.location.href = "/";
+                        document.cookie = "userId=" + response.body + ";path=/";
+                        window.location.href = "/html/login.html";
                     }
                 } catch (e) {
                     console.log(e);

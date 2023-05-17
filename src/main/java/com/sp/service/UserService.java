@@ -17,10 +17,10 @@ public class UserService {
     private UserRepository userRepository;
     @Autowired
     private CardService cardService;
-    public UUID addUser(User user) {
+    public User addUser(User user) {
         user = userRepository.save(user);
         cardService.newUserSet(user);
-        return user.getUUID();
+        return user;
     }
 
     public boolean remUser(UUID uuid) {
