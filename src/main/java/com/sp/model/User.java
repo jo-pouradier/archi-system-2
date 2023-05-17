@@ -65,6 +65,7 @@ public class User implements OwnerUUID{
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", balance='" + balance + '\'' +
                 '}';
     }
 }
